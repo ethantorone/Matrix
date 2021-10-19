@@ -128,12 +128,18 @@ double & Matrix::at(uint row, uint col) {return mat[row][col];} // get/set eleme
 const double & Matrix::at (uint row, uint col) const {return mat[row][col];}
 
 void Matrix::printMatrix() {
-    for (int i = 0; i < this-> numRows(); i++) {
+    cout << "[";
+    for (int i = 0; i < this->numRows(); i++) {
         for (int j = 0; j < this->numCols(); j++) {
-            cout << mat[i][j] << ", ";
+            cout << mat[i][j];
+            if (j < this->numCols() - 1)
+                cout << " ";
         } //for
-        cout << endl;
+        if (i < this->numRows() - 1)
+            cout << endl << " ";
     } //for
+    cout << "]" << endl;
+
 } //printMatrix
 
 // get element at row,col (when using a const object)
