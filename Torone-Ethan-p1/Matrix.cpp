@@ -8,9 +8,9 @@ typedef unsigned int uint;
 
 
 Matrix::Matrix(uint rows, uint cols) { // constructor (all elements initialized to 0)
-    mat = new double*[cols];
+    mat = new double*[rows];
     for (int i = 0; i < rows; i++) {
-        mat[i] = new double[rows];
+        mat[i] = new double[cols];
     } //for
     for (uint i = 0; i < rows; i++) {
         for (uint j = 0; j < cols; j++) {
@@ -22,9 +22,9 @@ Matrix::Matrix(uint rows, uint cols) { // constructor (all elements initialized 
 } //Matrix
 
 Matrix::Matrix(const Matrix & m) { // copy constructor
-    mat = new double*[m.numCols()];
-    for (int i = 0; i < m.numCols(); i++) {
-        mat[i] = new double[m.numRows()];
+    mat = new double*[m.numRows()];
+    for (int i = 0; i < m.numRows(); i++) {
+        mat[i] = new double[m.numCols()];
     } //for
     for (uint i = 0; i < m.numRows(); i++) {
         for (uint j = 0; j < m.numCols(); j++) {
