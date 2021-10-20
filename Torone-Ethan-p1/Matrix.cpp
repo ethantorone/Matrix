@@ -9,7 +9,7 @@ typedef unsigned int uint;
 
 Matrix::Matrix(uint rows, uint cols) { // constructor (all elements initialized to 0)
     mat = new double*[rows];
-    for (int i = 0; i < rows; i++) {
+    for (uint i = 0; i < rows; i++) {
         mat[i] = new double[cols];
     } //for
     for (uint i = 0; i < rows; i++) {
@@ -23,7 +23,7 @@ Matrix::Matrix(uint rows, uint cols) { // constructor (all elements initialized 
 
 Matrix::Matrix(const Matrix & m) { // copy constructor
     mat = new double*[m.numRows()];
-    for (int i = 0; i < m.numRows(); i++) {
+    for (uint i = 0; i < m.numRows(); i++) {
         mat[i] = new double[m.numCols()];
     } //for
     for (uint i = 0; i < m.numRows(); i++) {
@@ -35,7 +35,7 @@ Matrix::Matrix(const Matrix & m) { // copy constructor
     this->columns = m.numCols();
 } //Matrix
 Matrix::~Matrix() {
-    for (int i = 0; i < rows; i++) {
+    for (uint i = 0; i < rows; i++) {
         delete[] mat[i];
     } //for
     delete[] mat;
@@ -90,10 +90,10 @@ Matrix Matrix::multiply(double s) const { // multiply this matrix by a scaler
 } //multiply
 Matrix Matrix::multiply(const Matrix & m) const { // multiply this matrix by another matrix
     Matrix result(this->numRows(), m.numCols());
-    for (int i = 0; i < result.numRows(); i++) {        //result's rows
-        for (int j = 0; j < result.numCols(); j++) {    //result's cols
+    for (uint i = 0; i < result.numRows(); i++) {        //result's rows
+        for (uint j = 0; j < result.numCols(); j++) {    //result's cols
             double sum = 0;
-            for (int k = 0; k < this->numCols(); k++) { //1st's cols / 2nd's rows
+            for (uint k = 0; k < this->numCols(); k++) { //1st's cols / 2nd's rows
                 sum += this->at(i,k) * m.at(k,j);       //multiplies 1st[i,k] * 2nd[k,j]
             } //for
             result.at(i,j) = sum;
@@ -113,8 +113,8 @@ Matrix Matrix::divide(double s) const { // divide this matrix by a scalar
 } //divide
 Matrix Matrix::t() const { // transpose of this matrix
     Matrix result(this->numCols(), this->numRows());
-    for (int i = 0; i < this->numRows(); i++) {       //this's rows
-        for (int j = 0; j < this->numCols(); j++) {   //this's cols
+    for (uint i = 0; i < this->numRows(); i++) {       //this's rows
+        for (uint j = 0; j < this->numCols(); j++) {   //this's cols
             result.at(j,i) = this->at(i,j);
         } //for
     } //for
@@ -129,8 +129,8 @@ const double & Matrix::at (uint row, uint col) const {return mat[row][col];}
 
 void Matrix::printMatrix() {
     cout << "[";
-    for (int i = 0; i < this->numRows(); i++) {
-        for (int j = 0; j < this->numCols(); j++) {
+    for (uint i = 0; i < this->numRows(); i++) {
+        for (uint j = 0; j < this->numCols(); j++) {
             cout << mat[i][j];
             if (j < this->numCols() - 1)
                 cout << " ";

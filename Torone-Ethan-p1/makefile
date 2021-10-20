@@ -1,9 +1,9 @@
-FLAGS = -Wall -pedantic-errors -o
+FLAGS = -Wall -pedantic-errors
 
 compile:
-	g++ -c Matrix.cpp
-	g++ -c p1.cpp
-	g++ -o p1 Matrix.o p1.o
+	g++ $(FLAGS) -c Matrix.cpp
+	g++ $(FLAGS) -c p1.cpp
+	g++ $(FLAGS) -o p1 Matrix.o p1.o
 
 run: compile
 	./p1
